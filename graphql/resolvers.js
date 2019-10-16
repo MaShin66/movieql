@@ -1,14 +1,21 @@
-import { getMovies, getById, addMoive, deleteMoive } from "./db";
+import { getMovies } from "./db";
 
 const resolvers = {
     Query: {
-        movies: () => getMovies(),
-        movie: (_, { id }) => getById(id)
-    },
-    Mutation: {
-        addMovie: (_, { name, score }) => addMoive(name, score),
-        deleteMoive: (_, { id }) => deleteMoive(id)
+        movies: (_, { limit, rating }) => getMovies(limit, rating)
     }
 }
 
 export default resolvers;
+
+// import { getMovies, getMovie, getSuggestions } from "./db";
+
+// const resolvers = {
+//   Query: {
+//     movies: (_, { rating, limit }) => getMovies(limit, rating),
+//     movie: (_, { id }) => getMovie(id),
+//     suggestions: (_, { id }) => getSuggestions(id)
+//   }
+// };
+
+// export default resolvers;
